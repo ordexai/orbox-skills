@@ -1,0 +1,10 @@
+{
+  "name": "orbox",
+  "version": "2.0.0",
+  "description": "Map and edit business processes in Orbox through the Orbox MCP server.",
+  "author": { "name": "Orbox Labs s.r.o." },
+  "homepage": "https://orbox.dev",
+  "repository": "https://github.com/ordexai/orbox-skills",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": ["orbox", "process", "mcp"]
+}

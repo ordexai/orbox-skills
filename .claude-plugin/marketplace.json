@@ -1,0 +1,12 @@
+{
+  "name": "orbox",
+  "description": "Orbox skills for AI agents",
+  "owner": { "name": "Orbox Labs s.r.o.", "url": "https://orbox.dev" },
+  "plugins": [
+    {
+      "name": "orbox",
+      "source": "./",
+      "description": "Map and edit business processes in Orbox through the Orbox MCP server."
+    }
+  ]
+}

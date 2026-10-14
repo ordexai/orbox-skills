@@ -1,0 +1,35 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check plugin version matches the tag
+        run: |
+          version="$(jq -r .version .claude-plugin/plugin.json)"
+          test "v${version}" = "${GITHUB_REF_NAME}" || { echo "plugin.json version ${version} != tag ${GITHUB_REF_NAME}"; exit 1; }
+
+      - name: Check skill frontmatter name matches its folder
+        run: |
+          for f in skills/*/SKILL.md; do
+            dir="$(basename "$(dirname "$f")")"
+            name="$(sed -n 's/^name: *//p' "$f" | head -1)"
+            test "$name" = "$dir" || { echo "$f: name '$name' != folder '$dir'"; exit 1; }
+          done
+
+      - name: Build zip
+        run: scripts/build-zip.sh
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" dist/orbox-process.zip --title "${GITHUB_REF_NAME}" --generate-notes
