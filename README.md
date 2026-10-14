@@ -18,7 +18,7 @@ Then run `/mcp` in a session, select `orbox` and choose **Authenticate**.
 
 **claude.ai and Claude Desktop**
 
-Settings → Connectors → **Add custom connector**: name `Orbox`, URL `https://orbox.dev/api/mcp`, then **Connect** and sign in. Claude Desktop uses the connectors of your claude.ai account.
+**Customize → Connectors → + Add → Add custom connector**: name `Orbox`, URL `https://orbox.dev/api/mcp`, keep the detected sign-in settings, then sign in. On Team and Enterprise an owner adds the connector first. Claude Desktop uses your claude.ai account, so set it up once in either. Step-by-step guide: [docs/claude-app.md](docs/claude-app.md).
 
 **Codex**
 
@@ -41,9 +41,9 @@ claude plugin install orbox@orbox
 **claude.ai and Claude Desktop**
 
 1. Download [`orbox-process.zip`](https://github.com/ordexai/orbox-skills/releases/latest/download/orbox-process.zip).
-2. Settings → Capabilities → Skills → **Upload skill**, and pick the zip. Code execution must be turned on.
+2. **Customize → Skills → + → Create skill → Upload a skill**, and pick the zip. Code execution must be on (Settings → Capabilities).
 
-On Team and Enterprise plans, an organization owner can provision the skill for everyone in the organization.
+On Enterprise, an organization owner can upload the skill once for everyone in Organization settings → Plugins & skills. Details: [docs/claude-app.md](docs/claude-app.md).
 
 **Codex, Cursor, opencode and other agents** (via [`skills`](https://github.com/vercel-labs/skills)):
 
